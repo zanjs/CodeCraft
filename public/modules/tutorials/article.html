@@ -1,0 +1,61 @@
+<div class="page-container">
+    <div class="row">
+        <div class="col-sm-9">
+            <h4>
+                <a style="color: darkgray" ng-click="viewAlbum(article.album._id)">
+                    <i class="fa fa-book"></i> {{ article.album.name }}
+                </a>
+            </h4>
+            <hr/>
+            <form name="form" novalidate>
+                <div class="form-group center" ng-class="{ 'has-error': !form.title.$valid }">
+                    <h2 ng-if="mode === 'view'">{{ article.title }}</h2>
+                    <input class="form-control" type="text" name="title" ng-if="mode === 'edit'" ng-model="articleData.title" placeholder="文章标题" required/>
+                </div>
+                <div class="form-group" style="min-height: 300px">
+                    <div class="pagedown-viewer" content="article.content" ng-if="mode === 'view'"></div>
+                    <div class="pagedown" ng-if="mode === 'edit'" ng-model="articleData.content" placeholder="'请在此处编辑文章内容，支持 Markdown (点击右上角的按钮查看Markdown帮助)'"></div>
+                </div>
+                <div class="form-group center">
+                    <button type="button" class="btn btn-success btn-sm" ng-if="mode === 'view' && article.author._id === user._id" ng-click="toggleEdit()">
+                        <i class="fa fa-edit"></i> 编辑文章
+                    </button>
+                    <button type="button" class="btn btn-default btn-sm" ng-if="mode === 'edit'" ng-click="toggleEdit()"> 取消 </button>
+                    <button type="button" class="btn btn-success btn-sm" ng-if="mode === 'edit'" busy="save()" busy-disabled="!form.$valid"> 保存 </button>
+                </div>
+            </form>
+            <div class="col-sm-12" ng-if="mode === 'view'">
+                <div class="comments-panel" comments="article.comments" save-comments="saveComments(comments)"></div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="col-sm-12">
+                <div class="profile-photo-medium inner">
+                    <img ng-src="{{ article.author.photo === 'default' ? 'resources/img/avatar/avatar_default.jpg' : article.author.photo }}" alt="huo" class="img-circle">
+                </div>
+                <div class="profile-general">
+                    <h5>{{ article.author.username }}</h5>
+                </div>
+            </div>
+            <!--<div class="col-sm-12">-->
+                <!--参与贡献的人: <a>朝尼</a>  <a>尼瑪</a>-->
+            <!--</div>-->
+            <!--<div class="col-sm-12">-->
+                <!--<hr>-->
+                <!--<p>相关推荐:</p>-->
+                <!--<p>-->
+                    <!--<a>We Do Code Right</a>-->
+                <!--</p>-->
+                <!--<p>-->
+                    <!--<a>Database 2015</a>-->
+                <!--</p>-->
+                <!--<p>-->
+                    <!--<a>Learn Python from 0</a>-->
+                <!--</p>-->
+                <!--<p>-->
+                    <!--<a>Computer Science</a>-->
+                <!--</p>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>

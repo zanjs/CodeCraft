@@ -1,0 +1,52 @@
+<form name="form">
+<div class="modal-header">
+    <h3>
+    用户<span ng-if="mode === 'login'">登录</span><span ng-if="mode === 'register'">注册</span>
+    <a class="close" ng-click="close()">&times;</a>
+    </h3>    
+</div>
+<div class="modal-body">
+	<div ng-if="message">
+		<div class="alert alert-{{ message.type }}" role="alert">
+			<i class="fa fa-info-circle" ng-if="message.type === 'info'"></i>
+			<i class="fa fa-warning" ng-if="message.type !== 'info'"></i>
+			{{ message.text }}
+		</div>
+	</div>
+	<div class="form-group" ng-if="mode === 'register'" ng-class="{ 'has-error': !form.username.$valid, 'has-success': form.username.$valid }">
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-user"></i></span>
+			<input type="text" class="form-control" name="username" ng-model="userData.username" placeholder="用户名称" required minlength="2">
+		</div>
+	</div>
+	<div class="form-group" ng-class="{ 'has-error': !form.email.$valid, 'has-success': form.email.$valid }">
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+			<input type="email" class="form-control" name="email" ng-model="userData.email" placeholder="电子邮箱" required>
+		</div>
+	</div>
+	<div class="form-group" ng-class="{ 'has-error': !form.password.$valid, 'has-success': form.password.$valid }">
+		<div class="input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+			<input type="password" class="form-control" name="password" ng-model="userData.password" placeholder="登陆密码" required minlength="6">
+		</div>
+	</div>
+	<div class="form-group" ng-if="mode === 'register'" ng-class="{ 'has-error': !form.password2.$valid || userData.password !== userData.password2, 'has-success': form.password2.$valid && userData.password === userData.password2 }">
+		<div class="input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+			<input type="password" class="form-control" name="password2" ng-model="userData.password2" placeholder="确认密码" required minlength="6">
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<a class="pull-left" ng-click="toggle()">
+		<span class="text-success" ng-if="mode === 'login'">还没有源艺账户? 5秒注册  </span>
+		<span class="text-success" ng-if="mode === 'register'">我已注册源艺, 前往登录  </span>
+	</a>
+
+	<button type="button" class="btn btn-sm" busy="findPassword()" ng-if="mode === 'login'" busy-disabled="!form.email.$valid">找回密码</button>
+	<button type="button" class="btn btn-sm" ng-click="close()">取消</button>
+	<button class="btn btn-success btn-sm" busy="login()" ng-if="mode === 'login'" busy-disabled="!formValid(form)">登录</button>
+	<button class="btn btn-success btn-sm" busy="register()" ng-if="mode === 'register'" busy-disabled="!formValid(form)">注册</button>
+</div>
+</form>

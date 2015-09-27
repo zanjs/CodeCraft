@@ -1,0 +1,105 @@
+<div class="page-container row">
+    <div class="left-column col-sm-4">
+        <div class="profile-photo inner">
+            <img ng-src="{{ user.photo === 'default' ? 'resources/img/avatar/avatar_default.jpg' : user.photo }}" alt="avatar" class="img-circle">
+        </div>
+        <div class="profile-general inner">
+            <h4>{{ user.username }}</h4>
+            <hr/>
+            <span><i class="fa fa-clock-o"></i> 于 {{ user.createdAt | cnDate }} 加入源艺</span>
+            <hr/>
+            <div class="row">
+                <div class="col-sm-4">
+                    <span>
+                        <h4><a>{{ user.articlesCount }}</a></h4>
+                        文章
+                    </span>
+                </div>
+                <div class="col-sm-4">
+                    <span>
+                        <h4><a>{{ user.recommendedCount }}</a></h4>
+                        推荐
+                    </span>
+                </div>
+                <div class="col-sm-4">
+                    <span>
+                        <h4><a>{{ user.followedCount }}</a></h4>
+                        关注
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right-column col-sm-8">
+        <ul class="nav nav-tabs">
+            <li role="presentation" ng-class="{ active: tab === 'activities' }" ng-click="switchTab('activities')">
+                <a>
+                    <i class="fa fa-rss"></i> 相关动态
+                </a>
+            </li>
+            <li role="presentation" ng-class="{ active: tab === 'collections' }" ng-click="switchTab('collections')">
+                <a>
+                    <i class="fa fa-bookmark"></i> <span ng-if="isVisitor">我</span><span ng-if="!isVisitor">Ta</span>的收藏
+                </a>
+            </li>
+            <li role="presentation" ng-class="{ active: tab === 'albums' }" ng-click="switchTab('albums')">
+                <a>
+                    <i class="fa fa-newspaper-o"></i> <span ng-if="isVisitor">我</span><span ng-if="!isVisitor">Ta</span>的专辑
+                </a>
+            </li>
+            <li role="presentation" ng-class="{ active: tab === 'contributions' }" ng-click="switchTab('contributions')">
+                <a>
+                    <i class="fa fa-pencil-square-o"></i> <span ng-if="isVisitor">我</span><span ng-if="!isVisitor">Ta</span>的贡献
+                </a>
+            </li>
+        </ul>
+        <br/><br/>
+        <div ng-if="tab === 'activities'">
+            <div ng-repeat="activity in user.activities">
+                <div class="col-sm-12">
+                    <span style="color: darkgray">
+                        <strong>{{ activity.title }}</strong>
+                    </span>
+                    <span class="pull-right">
+                        {{ activity.date | cnDate }}
+                    </span>
+                </div>
+                <div class="col-sm-12">
+                    <a ng-click="viewActivityDetails(activity)">
+                        {{ activity.text }}
+                    </a>
+                </div>
+                <br/><br/><br/>
+            </div>
+            <div class="col-sm-12" ng-if="user.activities.length === 0">
+                暂时还没有动态
+            </div>
+        </div>
+        <div ng-if="tab === 'collections'">
+            <div class="col-sm-12" ng-if="user.albumCollections.length === 0">
+                暂时还没有收藏
+            </div>
+        </div>
+        <div ng-if="tab === 'albums'">
+            <div ng-repeat="album in user.albums">
+                <div class="col-sm-12">
+                    <a ng-click="viewAlbumDetails(album)">
+                        <strong>{{ album.name }}</strong>
+                    </a>
+                    <span class="pull-right">
+                        {{ album.updatedAt | cnDate }}
+                    </span>
+                </div>
+                <br/><br/><br/>
+            </div>
+            <div class="col-sm-12" ng-if="user.albums.length === 0">
+                暂时还没有专辑
+            </div>
+        </div>
+        <div ng-if="tab === 'contributions'">
+            <div class="col-sm-12" ng-if="user.albumContributions.length === 0">
+                暂时还没有贡献文章给其他人的专辑
+            </div>
+        </div>
+    </div>
+</div>

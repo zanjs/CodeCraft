@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="codeCraft">
+<head lang="en">
+    <meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript, Code, Programming, Database, Data visuallization, Map, Language, Game, code craft, 源艺, 编程, 教程, 源代码, 实例, 数据库, 数据可视化, 游戏, 开发, 编程语言, 地图技术">
+    <meta name="description" content="Free Web tutorials on Programming, 分享源代码的开放平台">
+    <meta name="William Lee" content="Sharing is a good thing. 分享是个让人愉快的事情.">
+    <title>CodeCraft - 源艺</title>
+
+    <meta charset="UTF-8">
+    <base href="/">
+
+    <link rel="stylesheet" href="components/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="components/bootstrap-switch/css/bootstrap-switch.min.css"/>
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="components/angular-loading-bar/loading-bar.css"/>
+    <link rel="stylesheet" href="components/angular-toastr/angular-toastr.css"/>
+    <link rel="stylesheet" href="components/pagedown-bootstrap/css/jquery.pagedown-bootstrap.css">
+    <link rel="stylesheet" href="components/google-code-prettify/prettify.css">
+
+    <link rel="stylesheet" href="css/animate.css"/>
+    <link rel="stylesheet" href="css/code-craft.css"/>
+    <link rel="stylesheet" href="css/main-menu.css"/>
+</head>
+<body>
+
+    <div ui-view class="bounce"></div>
+    <div ng-controller="MainMenuController">
+        <nav id="bt-menu" class="bt-menu" ng-class="{ 'bt-menu-open': menuOpened, 'bt-menu-close': !menuOpened }">
+            <div style="width: 100%; height: 100%" ng-click="closeMenu()"></div>
+            <a class="bt-menu-trigger" ng-click="toggleMenu()"><span>Menu</span></a>
+            <ul>
+                <li ng-repeat="item in menu.navigations" tooltip-placement="left" tooltip="{{ item.name }}">
+                    <a class="fa fa-{{ item.icon }}" ng-click="item.click()">{{ item.name }}</a>
+                </li>
+            </ul>
+            <ul>
+                <li ng-repeat="button in menu.buttons" tooltip="{{ button.name }}">
+                    <a class="fa fa-{{ button.icon }}" ng-click="button.click()">{{ button.name }}</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="profile-photo-suspended bounce" ng-if="user && user._id && !menuOpened" ng-click="viewProfile()">
+            <img ng-src="{{ user.photo === 'default' ? 'resources/img/avatar/avatar_default.jpg' : user.photo }}" alt="huo" class="img-circle">
+        </div>
+    </div>
+    <div class="footer">
+        <hr/>
+        <br/>
+        <br/>
+        <br/>
+        <a href="http://www.miitbeian.gov.cn/" style="color: darkgray">© 2015 源艺冀ICP备15021207号</a>
+    </div>
+
+
+    <script src="components/jquery/jquery-2.14.min.js"></script>
+    <script src="components/bootstrap/js/bootstrap.min.js"></script>
+    <script src="components/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <script type="text/javascript" src="components/angular/angular.js"></script>
+    <script type="text/javascript" src="components/angular-ui-router/angular-ui-router.js"></script>
+    <script type="text/javascript" src="components/angular-cookies/angular-cookies.js"></script>
+    <script type="text/javascript" src="components/angular-scroll/angular-scroll.js"></script>
+    <script type="text/javascript" src="components/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="components/angular-ui-bootstrap/angular-ui-bootstrap-0.12.1.js"></script>
+    <script type="text/javascript" src="components/angular-loading-bar/loading-bar.js"></script>
+    <script type="text/javascript" src="components/angular-toastr/angular-toastr.js"></script>
+    <script type="text/javascript" src="components/angular-bootstrap-switch/angular-bootstrap-switch.min.js"></script>
+    <script type="text/javascript" src="components/underscore/underscore.min.js"></script>
+    <script type="text/javascript" src="components/pagedown-bootstrap/js/Markdown.Converter.js"></script>
+    <script type="text/javascript" src="components/pagedown-bootstrap/js/Markdown.Sanitizer.js"></script>
+    <script type="text/javascript" src="components/pagedown-bootstrap/js/Markdown.Editor.js"></script>
+    <script type="text/javascript" src="components/pagedown-bootstrap/js/Markdown.Extra.js"></script>
+    <script type="text/javascript" src="components/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="components/autosize/autosize.min.js"></script>
+
+    <script type="text/javascript" src="resources/config.js"></script>
+    <script type="text/javascript" src="modules/security/securityModule.js"></script>
+    <script type="text/javascript" src="modules/framework/apiModule.js"></script>
+    <script type="text/javascript" src="modules/framework/utilitiesModule.js"></script>
+    <script type="text/javascript" src="modules/framework/uiModule.js"></script>
+    <script type="text/javascript" src="modules/framework/frameworkModule.js"></script>
+    <script type="text/javascript" src="modules/account/accountModule.js"></script>
+    <script type="text/javascript" src="modules/tutorials/tutorialsModule.js"></script>
+
+    <script type="text/javascript" src="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<div class="page-container">
+    <h3>
+        <i class="fa fa-institution"></i> 专辑大厅
+    </h3>
+    <hr/>
+    <div class="row">
+        <div class="col-sm-8 pull-left">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-sm" ng-class="{ active: searchOptions.type === 'All' }" ng-click="search('All')">全部</button>
+                <button type="button" class="btn btn-default btn-sm" ng-class="{ active: searchOptions.type === 'Web' }" ng-click="search('Web')">网络</button>
+                <button type="button" class="btn btn-default btn-sm" ng-class="{ active: searchOptions.type === 'Database' }" ng-click="search('Database')">数据库</button>
+                <button type="button" class="btn btn-default btn-sm" ng-class="{ active: searchOptions.type === 'Mobile' }" ng-click="search('Mobile')">移动应用</button>
+                <button type="button" class="btn btn-default btn-sm" ng-class="{ active: searchOptions.type === 'Game' }" ng-click="search('Game')">游戏开发</button>
+                <button type="button" class="btn btn-default btn-sm" ng-class="{ active: searchOptions.type === 'Map' }" ng-click="search('Map')">地图技术</button>
+                <button type="button" class="btn btn-default btn-sm" ng-class="{ active: searchOptions.type === 'Language' }" ng-click="search('Language')">编程语言</button>
+                <button type="button" class="btn btn-default btn-sm" ng-class="{ active: searchOptions.type === 'Visualization' }" ng-click="search('Visualization')">数据可视化</button>
+                <button type="button" class="btn btn-default btn-sm" ng-class="{ active: searchOptions.type === 'Other' }" ng-click="search('Other')">其它类别</button>
+            </div>
+        </div>
+        <div class="col-sm-4 pull-right">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="搜索专辑/文章">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="row album-list">
+        <div class="album-frame" ng-repeat="album in filteredAlbums">
+            <div class="album" ng-click="togglePreview(album ,$index)" ng-style="{'background-image': 'url(' + (album.cover === 'default' ? 'resources/img/album-covers/default.jpg' : album.cover) + ')'}">
+                <div class="over">
+                    <h4><b>{{ album.name }}</b></h4>
+                    <div>
+                        <i class="fa fa-file-o"></i> {{ album.articlesCount }} &nbsp;
+                        <i class="fa fa-bookmark-o"></i> {{ album.bookmarkedCount }} &nbsp;
+                        <i class="fa fa-thumbs-o-up"></i> {{ album.likedCount }} &nbsp;
+                        <i class="fa fa-send-o"></i> {{ album.sharedCount }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

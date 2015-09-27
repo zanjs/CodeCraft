@@ -1,0 +1,47 @@
+<div class="page-container">
+    <div class="row">
+        <div class="col-sm-9">
+            <form name="form" novalidate>
+                <div class="form-group" ng-class="{ 'has-error': !form.title.$valid }">
+                    <input class="form-control" type="text" name="title" ng-model="articleData.title" placeholder="文章标题" required/>
+                </div>
+                <div class="form-group">
+                    <div class="pagedown" ng-model="articleData.content" placeholder="'请在此处编辑文章内容，支持 Markdown (点击右上角的按钮查看Markdown帮助)'"></div>
+                </div>
+                <div class="form-group center">
+                    <button type="button" class="btn btn-default btn-sm" ng-click="cancel()"> 取消 </button>
+                    <button type="button" class="btn btn-success btn-sm" busy="save()" busy-disabled="!form.$valid"> 保存 </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-3">
+            <div class="col-sm-12">
+                <div class="profile-photo-medium inner">
+                    <img ng-src="{{ user.photo === 'default' ? 'resources/img/avatar/avatar_default.jpg' : user.photo }}" alt="huo" class="img-circle">
+                </div>
+                <div class="profile-general">
+                    <h5>{{ user.username }}</h5>
+                </div>
+            </div>
+            <!--<div class="col-sm-12">-->
+                <!--参与贡献的人: <a>朝尼</a>  <a>尼瑪</a>-->
+            <!--</div>-->
+            <!--<div class="col-sm-12">-->
+                <!--<hr>-->
+                <!--<p>相关推荐:</p>-->
+                <!--<p>-->
+                    <!--<a>We Do Code Right</a>-->
+                <!--</p>-->
+                <!--<p>-->
+                    <!--<a>Database 2015</a>-->
+                <!--</p>-->
+                <!--<p>-->
+                    <!--<a>Learn Python from 0</a>-->
+                <!--</p>-->
+                <!--<p>-->
+                    <!--<a>Computer Science</a>-->
+                <!--</p>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>

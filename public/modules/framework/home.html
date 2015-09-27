@@ -1,0 +1,89 @@
+<div class="page-container">
+    <div class="homepage-header">
+        <div class="row">
+            <div class="col-sm-6 logo-tile">
+                <img class="img logo-img" src="resources/img/logo.png" alt="源艺"/>
+            </div>
+            <div class="col-sm-6 homepage-tiles well">
+                <div class="row">
+                    <div class="col-sm-4 navigation-tile">
+                        <div class="navigation-anchor">
+                            <img class="img navigation-anchor-img" src="resources/svg/drive.svg" alt="学习资源"/>
+                        </div>
+                        <h4>学习资源</h4>
+                        <p>找到有趣的专辑, 快速入门进行开发; 记录自己的心得, 分享给自己和大家</p>
+                        <p><a href="#tutorials" class="btn btn-default" role="button" du-smooth-scroll du-scrollspy>查看详情 &raquo;</a></p>
+                    </div>
+                    <div class="col-sm-4 navigation-tile">
+                        <div class="navigation-anchor">
+                            <img class="img navigation-anchor-img" src="resources/svg/discussion.svg" alt="探讨切磋"/>
+                        </div>
+                        <h4>探讨切磋</h4>
+                        <p>贴出自己的问题, 和大家一起讨论; 解答别人的疑惑, 在互动中一起快速成长</p>
+                        <p><a href="#forum" class="btn btn-default" role="button" ng-click="" du-smooth-scroll du-scrollspy>查看详情 &raquo;</a></p>
+                    </div>
+                    <div class="col-sm-4 navigation-tile">
+                        <div class="navigation-anchor">
+                            <img class="img navigation-anchor-img" src="resources/svg/users.svg" alt="加入我们"/>
+                        </div>
+                        <h4>加入我们</h4>
+                        <p>加入源艺, 把有用的资源分享给身边的朋友; 把自己的心得变成大家的财富</p>
+                        <p><a class="btn btn-default" role="button" ng-click="join()">查看详情 &raquo;</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="homepage-animation">
+        <video id="opening-video" autoplay loop>
+            <source src="resources/home_page_animation.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <h3 class="animation-title">分享是件让人愉快的事情</h3>
+    </div>
+    <div class="homepate-features">
+        <hr class="featurette-divider">
+        <div id="tutorials" class="row feature">
+            <div class="col-sm-5">
+                <img class="img" src="resources/img/laptop.jpg" alt="开发心得" style="width: 100%">
+            </div>
+            <div class="col-sm-7 well">
+                <h2 class="featurette-heading">入门教程 &#8226; 进阶随笔 &#8226; 技术专辑</h2>
+                <br/>
+                <p class="lead">在专辑大厅中搜索感兴趣的专辑, 或者浏览最新最热门最受欢迎的推荐, 总能找到一些让你眼前一亮的酷酷的东西, 把这些技术用进你的代码里, 在成为程序猿代码王的道路上高歌猛进吧!</p>
+                <p><a class="btn btn-default" role="button" ng-click="toAlbums()">进入专辑大厅 &raquo;</a></p>
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+        <div id="forum" class="row feature">
+            <div class="col-sm-7 well">
+                <h2 class="featurette-heading">提出问题 &#8226; 参与讨论</h2>
+                <br/>
+                <p class="lead">有什么问题弄不明白? 代码无论如何都得不到预期的效果? 问出来, 看看大家有什么好的解决办法吧. 或者之前恰巧遇到类似的问题, 把解决方案分享一下, 帮助帮助那些需要指点的程序猿吧!</p>
+                <p><a class="btn btn-default" role="button">进入讨论专区 &raquo;</a></p>
+            </div>
+            <div class="col-sm-5">
+                <table class="table feature-table" style="text-align: center">
+                    <tr>
+                        <td><span><i class="fa fa-tags fa-3x"></i> 58</span></td>
+                        <td><span><i class="fa fa-comments-o fa-3x"></i> 762</span></td>
+                    </tr>
+                    <tr>
+                        <td><span><i class="fa fa-trophy fa-3x"></i> 109</span></td>
+                        <td><span><i class="fa fa-paper-plane fa-3x"></i> 524</span></td>
+
+                    </tr>
+                    <tr>
+                        <td><span><i class="fa fa-video-camera fa-3x"></i> 31</span></td>
+                        <td><span><i class="fa fa-image fa-3x"></i> 288</span></td>
+                    </tr>
+                    <tr>
+                        <td><span><i class="fa fa-beer fa-3x"></i> 13</span></td>
+                        <td><span><i class="fa fa-users fa-3x"></i> 1174</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

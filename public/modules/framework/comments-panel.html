@@ -1,0 +1,72 @@
+<div>
+    <hr/>
+    <h4>
+        {{ comments.length }}条评论
+    </h4>
+    <div class="media" ng-repeat="comment in processedComments">
+        <div class="media-left">
+            <div class="profile-photo-thumb inner">
+                <img class="avatar" user-id="comment.author._id">
+            </div>
+        </div>
+        <div class="media-body">
+            <div class="pagedown-viewer" content="comment.content"></div>
+            <div>
+                {{ comment.author.username }} {{ comment.date | cnDate }}
+                <div class="pull-right">
+                    <button type="button" class="btn btn-xs pull-right" ng-click="replyTo(comment)">
+                        <i class="fa fa-comment"></i> 回复
+                    </button>
+                </div>
+            </div>
+            <div class="media" ng-repeat="reply in comment.replies">
+                <div class="media-left">
+                    <div class="profile-photo-thumb inner">
+                        <img class="avatar" alt="avatar" user-id="reply.author._id">
+                    </div>
+                </div>
+                <div class="media-body">
+                    <div>
+                        <div class="pagedown-viewer" content="reply.content"></div>
+                    </div>
+                    <div>
+                        {{ reply.author.username }} {{ reply.date | cnDate }}
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-xs pull-right" ng-click="replyTo(reply)">
+                                <i class="fa fa-comment"></i> 回复
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="comment.uuid === replyToUuid">
+                <div class="form-group">
+                    <br/>
+                    <div class="pagedown" ng-model="commentData.content"></div>
+                </div>
+                <div class="form-group center">
+                    <button type="button" class="btn btn-default btn-xs" ng-click="cancel()">
+                        <i class="fa fa-comment"></i> 取消
+                    </button>
+                    <button type="button" class="btn btn-success btn-xs" busy="save()" busy-disabled="!commentData.content || commentData.content.length == 0">
+                        <i class="fa fa-comment"></i> 提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="replyToUuid === undefined">
+        <div class="form-group">
+            <br/>
+            <div class="pagedown" ng-model="commentData.content"></div>
+        </div>
+        <div class="form-group center">
+            <button type="button" class="btn btn-default btn-xs" ng-click="cancel()">
+                取消
+            </button>
+            <button type="button" class="btn btn-success btn-xs" busy="save()" busy-disabled="!commentData.content || commentData.content.length == 0">
+                提交
+            </button>
+        </div>
+    </div>
+</div>

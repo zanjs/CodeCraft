@@ -1,0 +1,130 @@
+<div class="page-container">
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="col-sm-12">
+                <div class="media">
+                    <div class="media-left">
+                        <div class="album-photo">
+                            <img class="media-object" ng-src="{{ album.cover === 'default' ? 'resources/img/album-covers/default.jpg' : album.cover }}" alt="...">
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <form name="form" novalidate>
+                            <div class="col-sm-12">
+                                <h3 class="media-heading" ng-if="mode === 'view'">{{ album.name }}</h3>
+                                <div class="form-group" ng-class="{ 'has-error': !form.name.$valid }" ng-if="mode === 'edit'">
+                                    <input type="text" class="form-control" name="name" ng-model="updatedAlbum.name" placeholder="专辑名称" required>
+                                </div>
+                            </div>
+                            <br/><br/><br/>
+                            <div class="col-sm-12" ng-if="mode === 'view'">
+                                <button type="button" class="btn btn-default btn-sm">
+                                    <i class="fa fa-bookmark"></i> {{ album.bookmarkedCount }} 收藏
+                                </button>
+                                <button type="button" class="btn btn-default btn-sm">
+                                    <i class="fa fa-thumbs-up"></i> {{ album.likedCount }} 推荐
+                                </button>
+                                <button type="button" class="btn btn-default btn-sm">
+                                    <i class="fa fa-send"></i> {{ album.sharedCount }} 分享
+                                </button>
+                                <button type="button" class="btn btn-success btn-sm pull-right" ng-click="edit()" ng-if="album.author._id === user._id">
+                                    <i class="fa fa-edit"></i> 修改专辑
+                                </button>
+                            </div>
+                            <div class="col-sm-12" ng-if="mode === 'edit'">
+                                <div class="pull-right">
+                                    <button type="button" class="btn btn-default btn-sm" ng-click="cancel()"> 取消 </button>
+                                    <button type="button" class="btn btn-success btn-sm" busy="save()" busy-disabled="!form.$valid"> 保存 </button>
+                                </div>
+                            </div>
+                            <br/><br/>
+                            <div class="col-sm-12">
+                                <span><i class="fa fa-tags"></i> 标签:</span>
+                                <span class="tag label label-info" ng-repeat="tag in album.tags">{{ tag }}</span>
+                            </div>
+                            <br/><br/>
+                            <div class="col-sm-12">
+                                <p ng-if="mode === 'view'">{{ album.introduction }}</p>
+                                <div class="form-group" ng-class="{ 'has-error': !form.introduction.$valid }" ng-if="mode === 'edit'">
+                                    <textarea class="form-control" name="introduction" ng-model="updatedAlbum.introduction" rows="15" placeholder="简单介绍 (500 字以内)" ng-maxlength="500"> </textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12" style="min-height: 300px">
+                <hr>
+                <h4>
+                    文章列表
+                    <span class="pull-right" style="font-size: small"> <i class="fa fa-file"></i> {{ album.articles.length || 0 }} 篇文章</span>
+                </h4>
+                <table class="table borderless">
+                    <tr ng-repeat="article in album.articles">
+                        <td>
+                            <div class="media">
+                                <div class="media-body">
+                                    <div class="col-sm-12">
+                                        <a ng-click="viewArticle(article._id)">
+                                            <strong>{{ article.title }}</strong>
+                                        </a>
+                                        <span class="pull-right">
+                                            {{ article.createdAt | cnDate }}
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <span style="color: darkgray">
+                                            {{ article.content }}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="media-right">
+                                    <div class="profile-photo-thumb inner">
+                                        <img class="avatar" user-id="article.createdBy._id">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="pull-right">
+                    <button type="button" class="btn btn-success btn-sm pull-right" ng-click="addArticle()" ng-if="album.author._id === user._id">
+                        <i class="fa fa-plus"></i> 添加文章
+                    </button>
+                </div>
+            </div>
+            <div class="col-sm-12" ng-if="mode === 'view'">
+               <div class="comments-panel" comments="album.comments" save-comments="saveComments(comments)"></div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="col-sm-12">
+                <div class="profile-photo-medium inner">
+                    <img ng-src="{{ album.author.photo === 'default' ? 'resources/img/avatar/avatar_default.jpg' : album.author.photo }}" alt="huo" class="img-circle">
+                </div>
+                <div class="profile-general">
+                    <h5>{{ album.author.username }}</h5>
+                </div>
+            </div>
+            <!--<div class="col-sm-12">-->
+                <!--参与贡献的人: <a>朝尼</a>  <a>尼瑪</a>-->
+            <!--</div>-->
+            <!--<div class="col-sm-12">-->
+                <!--<hr>-->
+                <!--<p>相关推荐:</p>-->
+                <!--<p>-->
+                    <!--<a>We Do Code Right</a>-->
+                <!--</p>-->
+                <!--<p>-->
+                    <!--<a>Database 2015</a>-->
+                <!--</p>-->
+                <!--<p>-->
+                    <!--<a>Learn Python from 0</a>-->
+                <!--</p>-->
+                <!--<p>-->
+                    <!--<a>Computer Science</a>-->
+                <!--</p>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>

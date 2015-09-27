@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-sm-4">
+        <div class="profile-photo inner">
+            <img ng-src="{{ album.author.photo === 'default' ? 'resources/img/avatar/avatar_default.jpg' : album.author.photo }}" alt="huo" class="img-circle">
+        </div>
+        <div class="center">
+            <h4>{{ album.author.name }}</h4>
+            <span><i class="fa fa-clock-o"></i> 于 {{ album.author.createdAt | cnDate }} 加入源艺</span>
+            <br/>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <span>
+                        <i class="fa fa-newspaper-o"></i> {{ album.author.articlesCount }}
+                    </span>
+                    <span>
+                        <i class="fa fa-trophy"></i> {{ album.author.recommendedCount }}
+                    </span>
+                    <span>
+                        <i class="fa fa-star"></i> {{ album.author.followedCount }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="preview-intro">
+            <h3>
+                {{ album.name }}
+                <span class="pull-right pointer" ng-click="close()">&#10006;</span>
+            </h3>
+            <p> {{ album.introduction | trimText:300 }} </p>
+        </div>
+        <div class="preview-actions">
+            <div class="pull-right">
+                <span>
+                    <i class="fa fa-file"></i> {{ album.articlesCount }} 文章 &nbsp;&nbsp;
+                </span>
+                <span>
+                    <i class="fa fa-bookmark"></i> {{ album.bookmarkedCount }} 收藏 &nbsp;&nbsp;
+                </span>
+                <span>
+                    <i class="fa fa-thumbs-up"></i> {{ album.likedCount }} 推荐 &nbsp;&nbsp;
+                </span>
+                <span>
+                    <i class="fa fa-send"></i> {{ album.likedCount }} 分享 &nbsp;&nbsp;
+                </span>
+                <button type="button" class="btn btn-sm btn-success" busy="viewAlbum()">详细内容</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="page-container row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <h3>源艺帐号激活服务</h3>
+        <div ng-if="message">
+            <div class="alert alert-{{ message.type }}" role="alert">
+                <i class="fa fa-info-circle" ng-if="message.type === 'info'"></i>
+                <i class="fa fa-warning" ng-if="message.type !== 'info'"></i>
+                {{ message.text }}
+                <p>系统将于 {{ counter }} 秒钟后返回源艺首页.</p>
+            </div>
+        </div>
+        <div ng-if="!message">
+            源艺正在激活您的帐号, 请稍等片刻 ...
+        </div>
+    </div>
+</div>

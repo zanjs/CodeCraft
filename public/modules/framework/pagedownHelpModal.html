@@ -1,0 +1,152 @@
+<div class="modal-header">
+    <h3>编辑器使用帮助</h3>
+</div>
+<div class="modal-body">
+    <form name="loginForm" novalidate>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>格式</th>
+                <th>预览</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>####三级标题(3个#)</td>
+                <td><h3>三级级标题(3个#)</h3></td>
+            </tr>
+            <tr>
+                <td>#####四级标题(4个#)</td>
+                <td><h4>四级级标题(4个#)</h4></td>
+            </tr>
+            <tr>
+                <td>######五级标题(5个#)</td>
+                <td><h5>五级标题(5个#)</h5></td>
+            </tr>
+            <tr>
+                <td>*斜体*</td>
+                <td><em>斜体</em></td>
+            </tr>
+            <tr>
+                <td>**加粗**</td>
+                <td><strong>加粗</strong></td>
+            </tr>
+
+            <tr>
+                <td>行内代码`code`</td>
+                <td>行内代码<code>code</code></td>
+            </tr>
+            <tr>
+                <td>
+                    ```
+                    <br/>//段落代码
+                    <br/>var a = 0;
+                    <br/>var b = 1;
+                    <br/>```
+                </td>
+                <td>
+                    <br/>
+                    <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code><span class="com">//代码段落</span></code></li><li class="L1"><code><span class="kwd">var</span><span class="pln"> a </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span></code></li><li class="L2"><code><span class="kwd">var</span><span class="pln"> b </span><span class="pun">=</span><span class="pln"> </span><span class="lit">1</span><span class="pun">;</span></code></li></ol></pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    (三个*号为分割线)
+                    <br/>***
+                </td>
+                <td>
+                    <hr/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    >引用文本
+                    <br/>>第二段落引用文本
+                    <br/>>>嵌套引用
+                </td>
+                <td>
+                    <blockquote>
+                        <p>引用文本 <br>
+                            第二段落引用文本</p>
+                        <blockquote>
+                            <p>嵌套引用</p>
+                        </blockquote>
+                    </blockquote>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    + 无序列表(“+”后有空格)
+                    <br/>+ 无序列表
+                    <br/>+ 无序列表
+                </td>
+                <td>
+                    <ul>
+                        <li>无序列表(“+”后有空格)</li>
+                        <li>无序列表</li>
+                        <li>无序列表</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    1. 有序列表(“.”后有空格)
+                    <br/>2. 有序列表
+                    <br/>3. 有序列表
+                </td>
+                <td>
+                    <ol>
+                        <li>有序列表(“.”后有空格)</li>
+                        <li>有序列表</li>
+                        <li>有序列表</li>
+                    </ol>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="form-group">
+            <span>
+                |表格|项目1左对齐|项目2居中对齐|项目3右对齐
+                <br/>|--- |:---       |:---:        |---:
+                <br/>|行1 |左         |中           |右
+                <br/>|行2 |A          |B            |C
+            </span>
+        </div>
+        <div class="form-group">
+            <span>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>表格</th>
+                        <th style="text-align:left">项目1左对齐</th>
+                        <th style="text-align:center">项目2居中对齐</th>
+                        <th style="text-align:right">项目3右对齐</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>行1</td>
+                        <td style="text-align:left">左</td>
+                        <td style="text-align:center">中</td>
+                        <td style="text-align:right">右</td>
+                    </tr>
+                    <tr>
+                        <td>行2</td>
+                        <td style="text-align:left">A</td>
+                        <td style="text-align:center">B</td>
+                        <td style="text-align:right">C</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </span>
+        </div>
+        <div class="form-group">
+            <span>
+                <strong>插入链接或图片，使用编辑器工具条更为方便</strong>
+            </span>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary btn-sm" ng-click="cancel()"><i class="fa fa-ban"></i> 关闭帮助</button>
+</div>
