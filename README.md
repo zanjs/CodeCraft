@@ -1,5 +1,8 @@
 # CodeCraft    源藝 #
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/zanjs/CodeCraft.svg)](https://greenkeeper.io/)
+
+
 ### 什么是源艺 ###
 
 * 源艺是以 node-express-angular 搭建的网络平台, 供开发人员, 学生和编程爱好者探讨技术问题, 发布和分享编程经验, 心得体会.
